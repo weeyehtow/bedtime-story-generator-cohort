@@ -34,7 +34,7 @@ For **Module 7** (the closing deploy module) you'll also need:
 
 You don't need either of these for the first six modules. Sign up the morning of Module 7's session, or the night before — it takes ~2 minutes each.
 
-The full step-by-step install walk-through (macOS + Windows variants for every command) is in **[`docs/crash_course.md`](docs/crash_course.md) Module 0**. Read it once, follow it once.
+The pre-flight install above is what you need. Don't skip the database-creation and schema-apply steps — those produce the most common Day-1 failures.
 
 ### Clone this repo to a sane path
 
@@ -131,12 +131,6 @@ Why does Gemini behave this way? Because [`AGENTS.md`](AGENTS.md) at the root of
 
 The V1 final code lives at the cohort root (`app/`, `frontend/`) — it's the same as `dist/module_07_deploy_vercel/`. **Don't run `uvicorn app.main:app --reload` from the cohort root** — the root's `app/` is Module 7's deploy-shape backend with no `/` route, so you'll see `404 Not Found`. Always `cd dist/module_NN_<slug>` first.
 
-## Self-paced reading
-
-- **[`docs/crash_course.md`](docs/crash_course.md)** is the single-file end-to-end narrative tutorial — ~1,700 lines that walk you from `python --version` through Module 7's live deploy. Use it for pre-class install (Module 0 install walk-through, Windows + macOS inline), catch-up if you miss a session, or self-study if you're going through the course alone. Each module section follows the same pattern: notional machine → analogy → what goes / what comes → code → trace in execution order → predict before you run → run + verify → why this design → defend it.
-- **[`docs/deploy_guide.md`](docs/deploy_guide.md)** is the click-by-click companion to Module 7. Render Blueprint flow, Vercel project import, the `BACKEND_URL` wire-up, common gotchas table. Verified against live Render/Vercel docs.
-- **[`docs/publish_your_work.md`](docs/publish_your_work.md)** is the closing-class capstone — turning your deployed app into a portfolio repo on your own GitHub.
-
 ## Publish your work
 
 At the end of Module 7 you have a complete, working V1 — *deployed*. The closing step of the course is to publish your version to your own GitHub as a portfolio piece — your *"I built this"* you can show to recruiters and managers, with a live demo URL they can click.
@@ -148,9 +142,6 @@ The walk-through is in **[`docs/publish_your_work.md`](docs/publish_your_work.md
 - **In the live session:** ask Gemini first using a module's *"Try asking Gemini"* prompt. If you're still stuck after 10 minutes, post a screenshot of the failing command in the cohort's async help channel and stay on the call.
 - **Between sessions:** async help channel + your instructor's office hours.
 - **If `verify_setup.sh` fails:** the script prints the exact one-line fix on the failing line. Paste it, re-run.
-- **If `psql` errors with `FATAL: database "<your-username>" does not exist`** (you'll first see this in Module 6 when the migration step runs): `$DATABASE_URL` isn't set in your *shell* — Python's `.env` loads into the Python process, not your terminal. Module 0's setup section in `docs/crash_course.md` explains the fix (one-line export, or a persistent shell-rc setup); each per-module README also reminds you when it's needed.
-- **If Module 7's deploy returns `FUNCTION_INVOCATION_FAILED`:** see the deploy guide's common-gotchas table — Vercel may have auto-detected the Python backend; the fix is in `.vercelignore`.
+- **If `psql` errors with `FATAL: database "<your-username>" does not exist`** (you'll first see this in Module 6 when the migration step runs): `$DATABASE_URL` isn't set in your *shell* — Python's `.env` loads into the Python process, not your terminal. Quick fix: `export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/llm_question_log` and re-run. Each per-module README reminds you when it's needed.
+- **If Module 7's deploy returns `FUNCTION_INVOCATION_FAILED`:** Vercel auto-detected the Python backend instead of treating it as a static-only deploy. The fix is in the `.vercelignore` file at the repo root — make sure it ships when you deploy.
 
----
-
-*If you're reading this from a download outside a cohort, welcome — the course works as a self-paced read using `docs/crash_course.md` plus the `dist/` checkpoints. The deploy walk-through in `docs/deploy_guide.md` is what carries you to a real public URL by the end.*

@@ -37,8 +37,6 @@ The frontend's `BACKEND_URL` constant in `frontend/script.js` ships as `"http://
 
 ## Deploy to production
 
-> **For the click-by-click step-by-step** with screenshots-as-prose, exact button labels, and a common-gotchas table, follow [`docs/deploy_guide.md`](../../docs/deploy_guide.md). The summary below names what each phase does; the deploy guide hand-holds the actual clicks.
-
 ### 1. Render backend + managed Postgres
 
 - Sign in to <https://render.com>. *New → Blueprint*. Connect your GitHub repo.

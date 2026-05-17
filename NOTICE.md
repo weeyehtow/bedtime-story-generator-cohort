@@ -10,7 +10,7 @@ This NOTICE is a plain-English explanation of what that means for **this specifi
 
 The student-facing companion repo for the **Bedtime Story Generator** training programme — a staged, hands-on conversion course that turns a working FastAPI Q&A app into a children's bedtime-story generator that calls Google's Gemini API and deploys to Vercel + Render.
 
-It contains the eight per-module checkpoint folders (`dist/module_00_baseline/` through `dist/module_07_deploy_vercel/`), the V1 final-state code at the repo root, the deploy configs (`Procfile`, `render.yaml`, `vercel.json`, `.vercelignore`), the `AGENTS.md` system prompt for AI partners, and three docs: a self-paced narrative tutorial (`docs/crash_course.md`), a click-by-click deploy walk-through (`docs/deploy_guide.md`), and a closing-class capstone (`docs/publish_your_work.md`).
+It contains the eight per-module checkpoint folders (`dist/module_00_baseline/` through `dist/module_07_deploy_vercel/`), the V1 final-state code at the repo root, the deploy configs (`Procfile`, `render.yaml`, `vercel.json`, `.vercelignore`), the `AGENTS.md` system prompt for AI partners, and the closing-class capstone walk-through (`docs/publish_your_work.md`).
 
 The architecture, curriculum design, instructor guide, slides, and PRD come from the corresponding gold-standard reference repo (private). This public repo exists so that students enrolled in the programme can do their hands-on work without needing access to the reference implementation.
 
