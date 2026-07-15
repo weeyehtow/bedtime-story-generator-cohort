@@ -82,9 +82,9 @@ ok "POST /ask returns answer + history (Gemini reachable)"
 # Check 9: Postgres recorded the new model name.
 last_model=$(psql "$DATABASE_URL" -tAc \
     "SELECT model_name FROM interactions ORDER BY id DESC LIMIT 1")
-[ "$last_model" = "gemini-2.5-flash-lite" ] \
-    || fail "Latest interactions.model_name is '$last_model' — expected 'gemini-2.5-flash-lite'."
-ok "Postgres recorded model_name = gemini-2.5-flash-lite"
+[ "$last_model" = "gemini-2.0-flash" ] \
+    || fail "Latest interactions.model_name is '$last_model' — expected 'gemini-2.0-flash'."
+ok "Postgres recorded model_name = gemini-2.0-flash"
 
 echo
 echo "Module 1 verification passed."

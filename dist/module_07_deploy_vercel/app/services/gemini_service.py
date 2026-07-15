@@ -7,7 +7,7 @@ from fastapi import HTTPException
 from app.system_prompt import SYSTEM_PROMPT
 
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
-GEMINI_MODEL = "gemini-2.5-flash-lite"
+GEMINI_MODEL = "gemini-3.5-flash"
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 generate_config = types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT)
